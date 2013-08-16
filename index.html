@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>bobalytics</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>bobalytics</h1>
+        <p>[hacker, drummer, lifter, husband, father]</p>
+        <a href="http://twitter.com/_bobwilliams" target="_blank"><img src="images/twitter_icon.png"></a>
+        <a href="https://github.com/bobwilliams" target="_blank"><img src="images/github_icon.png"></a>
+        <a href="mailto:bobwilliams.ii@mgmail.com"><img src="images/email_icon.png"></a>
+      </header>
+      <section>
+        <em>Sunday, August 11, 2013</em>
+        <h1>So many repos, so little time</h1>
+        <p>If you use github for a decent size organization, chances are you have many repos you keep a check on.  In fact, if you've been with the same organization for a year or two, you've probably moved around to another project at least one time if not more.</p>
+        <p>With so many repos you have to keep track of and want to have the lastest version of you've came up with a script or some way to automate the process.</p>
+        <p>Well, I have situation as above (we have well over 150 repos) and found myself in a constant state of peforming a <pre><code>$ git pull</code></pre>in way too many repos through any given time.</p>
+        <h2>I hacked a bit</h2>
+        <p>At first I created a simple bash script to automate the process but new repos were always being added and the initial script I created didn't take that into account but that only got me so far and wasn't hacked enough.</p>
+        <h2>I hacked some more</h2>
+        <p>I decied to play with <a href="http://www.python.org/">Python</a> and the <a href="http://docs.python-requests.org/en/latest/">Requests</a> module.</p>
+        <p>I came across a number of github modules as well but since I wanted to learn a bit more about the Requests module I decided to stay away from them for this exercise.</p>
+        <h2>End result</h2>
+        <p>The fruits of that labor ended up being a python script, feeding off a config.json file, which will go out for a given organization and perform a git command across all its repos.</p>
+        <p>I tend to mainly use the '<strong>status</strong>' or '<strong>pull</strong>' commands.</p>
+        <p>I've open sourced the code on github under the repo <a href="https://github.com/bobwilliams/git-repo-batch-command">git-repo-batch-command</a>.</p>
+        <p>The usage is pretty simple</p>
+        <pre><code>usage: grcb [-v | -h] cmd
+Options and arguments:
+-v     : show version info
+-h     : print help / usage
+cmd    : git command to execute across all repos in your organization</code></pre>
+        <p>And the config file is quite simple as well. In my case it looks something like:</p>
+        <pre><code>{
+  "gituser" : {
+    "username" : "bobwilliams",
+    "password" : "",
+    "organization" : "sparcedge"
+  }
+}</code></pre>
+        <h2>Conclusion</h2>
+        <p>Of course there is a lot more I would like to do with this so please head on over to the repo and make this little tool way better than it is today :)</p>
+        <p>Thanks...<br/>Bob</p>
+      </section>
+    </div>
+    <footer>
+      <p>Copyright&copy; 2013 <a href="http://bobwilliams.me">Bob Williams</a></p>
+      <p>Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
